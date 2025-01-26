@@ -46,11 +46,41 @@ class Graph:
         self.dfs_util(source, visited, result)
         return result
 
-graph = Graph(5)
-graph.createedge(1, 5)
-graph.createedge(5, 2)
-graph.createedge(3, 2)
-graph.createedge(5, 3)
-graph.createedge(1, 4)
+graph = None
+
+while True:
+    print("Press 1 to create edge")
+    print("Press 2 to print BFS")
+    print("Press 3 to print DFS")
+    print("Press 4 to exit")
+
+    choice = int(input("Enter option: "))
+
+    if choice == 1:
+        amount = int(input("How many numbers would you like: "))
+        graph = Graph(amount)
+        for i in range(amount):
+            x = int(input("What would you like the first number to be: "))
+            y = int(input("What would you like the second number to be: "))
+            graph.createedge(x, y)
+
+    elif choice == 2:
+        source = int(input("Which node would you like to start the search with: "))
+        print(graph.BFS(source))
+
+    elif choice == 3:
+        source = int(input("Which node would you like to start the search with: "))
+        print(graph.DFS(source))
+
+    elif choice >= 4:
+        break
+
+
+# graph = Graph(5)
+# graph.createedge(1, 5)
+# graph.createedge(5, 2)
+# graph.createedge(3, 2)
+# graph.createedge(5, 3)
+# graph.createedge(1, 4)
 # print(graph.BFS(0))
-print(graph.DFS(2))
+# print(graph.DFS(2))
